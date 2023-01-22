@@ -1,0 +1,11 @@
+const {Router} = require('express')
+const {create, update, delete_admin, view, index} = require('../controller/admin')
+const upload = require('../middleware/upload')
+// const {update} = require('../controller/admin')
+const AdminRouter = Router()
+AdminRouter.post('/create', upload.array('image'),create)
+AdminRouter.put('/:id',update)
+AdminRouter.delete('/:id',delete_admin)
+AdminRouter.get('/:id',view)
+AdminRouter.get('/',index)
+module.exports = AdminRouter
